@@ -1,11 +1,11 @@
-#csvToDmlGenerator
+# csvToDmlGenerator
 
 db 데이터를 덤프받은 csv 파일을 insert 구문의 dml로 생성하는 배치 프로그램
 
-##개발 동기
+## 개발 동기
 - db 데이터를 csv 파일로 덤프 내렸다가 올리려고 하는데 컬럼에 json 형식의 값들이 있어 csv 로 풀어지지 않는 경우가 있어서 개발해보게 됨...
 
-##구현 기술
+## 구현 기술
 - [Maven](https://maven.apache.org) ver. 3 이상
 - [Spring Boot(ver. 1.5.2), batch](https://spring.io/guides/gs/batch-processing/)
 	
@@ -21,7 +21,7 @@ db 데이터를 덤프받은 csv 파일을 insert 구문의 dml로 생성하는 
 	- [lang3](https://commons.apache.org/lang/) ver 3.5
 - [google guava](https://github.com/google/guava) ver 21.0
 
-##사용방법
+## 사용방법
 - main class : `CsvToDmlGenerateApplication`
 	- job test class : `CsvToDmlGenerateApplicationTest`
 - csv 파일의 위치, 구분자, 테이블명 등의 정보는 `FileInfoContainer` 인터페이스의 구현체에 선언하도록 되어있다.
@@ -34,7 +34,7 @@ db 데이터를 덤프받은 csv 파일을 insert 구문의 dml로 생성하는 
 	- `INSERT INTO(COLUMN_NAME1, COLUMN_NAME2, ...) VALUES(VAL1, VAL2, ...);`
 - dml 파일은 지정한 `csvFilePath` 내에 `테이블명.dml` 의 형태로 생성된다.
 
-##패키지 구조
+## 패키지 구조
 - `io.github.gogleowner.configuration` : job configuration 에 관한 것
 	- 배치 작업 관련 빈들이 선언되어있다.
 	- `chunk` 단위는 임의로 100개로 지정하였다. (`CsvToDmlGenerateJobConfiguration.dmlQueryGenerateStep()` 메소드 참고)
