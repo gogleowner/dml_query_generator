@@ -1,0 +1,4 @@
+INSERT INTO sample(name,gpa,dorm,class,room) VALUES ('Sally Whittaker',3.75,'McCarren House',2018,312);
+INSERT INTO sample(name,gpa,dorm,class,room) VALUES ('Belinda Jameson',3.52,'Cushing House',2017,148);
+INSERT INTO sample(name,gpa,dorm,class,room) VALUES ('Jeff Smith',3.20,'Prescott House',2018,'17-D');
+INSERT INTO sample(name,gpa,dorm,class,room) VALUES ('Sandy Allen',3.48,'Oliver House',2019,108);
