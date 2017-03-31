@@ -29,15 +29,15 @@ public class CsvToDmlGenerateJobConfiguration {
     private StepBuilderFactory stepBuilderFactory;
 
     @Bean
-    public Job dmlQueryGenerator() {
-        return jobBuilderFactory.get("dmlQueryGenerator")
-                .start(dmlQueryGenerateStep())
+    public Job csvToDmlGenerator() {
+        return jobBuilderFactory.get("csvToDmlGenerator")
+                .start(csvToDmlGenerateStep())
                 .build();
     }
 
     @Bean
-    public Step dmlQueryGenerateStep() {
-        return stepBuilderFactory.get("dmlQueryGenerateStep")
+    public Step csvToDmlGenerateStep() {
+        return stepBuilderFactory.get("csvToDmlGenerateStep")
                 .<Map<String, String>, String>chunk(100)
                 .reader(csvFileReader())
                 .processor(csvFileProcessor())

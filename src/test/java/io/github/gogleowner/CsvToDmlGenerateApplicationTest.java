@@ -23,14 +23,14 @@ import static org.hamcrest.MatcherAssert.assertThat;
 @RunWith(SpringJUnit4ClassRunner.class)
 public class CsvToDmlGenerateApplicationTest {
     @Autowired
-    private Job dmlQueryGenerator;
+    private Job csvToDmlGenerator;
 
     @Autowired
     private JobLauncher jobLauncher;
 
     @Test
     public void jobLaunchTest() throws Exception {
-        JobExecution jobExecution = jobLauncher.run(dmlQueryGenerator, new JobParameters());
+        JobExecution jobExecution = jobLauncher.run(csvToDmlGenerator, new JobParameters());
         assertThat(jobExecution.getExitStatus(), is(equalTo(ExitStatus.COMPLETED)));
     }
 
