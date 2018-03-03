@@ -6,9 +6,10 @@ db 데이터를 덤프받은 csv 파일을 insert 구문의 dml로 생성하는 
 - db 데이터를 csv 파일로 덤프 내렸다가 올리려고 하는데 컬럼에 json 형식의 값들이 있어 csv 로 풀어지지 않는 경우가 있어서 개발해보게 됨...
 
 ## 구현 기술
-- [Maven](https://maven.apache.org) ver. 3 이상
-- [Spring Boot(ver. 1.5.2), batch](https://spring.io/guides/gs/batch-processing/)
-	
+- 2018.03.03 업데이트
+	- [Spring Boot 2, batch](https://spring.io/guides/gs/batch-processing/)
+		- [spring batch 4.0.0-RELEASE](https://spring.io/blog/2017/12/04/spring-batch-4-0-0-release-is-now-available) 버전을 반영하기 위하여 스프링부트 버전을 올림
+
 	```
 	<dependency>
         <groupId>org.springframework.boot</groupId>
@@ -18,8 +19,25 @@ db 데이터를 덤프받은 csv 파일을 insert 구문의 dml로 생성하는 
 	
 - [apache commons](https://commons.apache.org)
 	- [collection4](https://commons.apache.org/proper/commons-collections/) ver 4.1
-	- [lang3](https://commons.apache.org/lang/) ver 3.5
-- [google guava](https://github.com/google/guava) ver 21.0
+	- [text](https://commons.apache.org/text/) ver 1.2
+		- [lang3](https://commons.apache.org/lang/) ver 3.7 부터 텍스트를 다루는 클래스들은 [text](https://commons.apache.org/text/)로 나누어지고 기존 클래스들은 @Deprecated 되었다.
+- [google guava](https://github.com/google/guava) ver 24.0-jre
+
+- 이전 내용..
+	- [Maven](https://maven.apache.org) ver. 3 이상
+	- [Spring Boot(ver. 1.5.2), batch](https://spring.io/guides/gs/batch-processing/)
+		
+		```
+		<dependency>
+	        <groupId>org.springframework.boot</groupId>
+	        <artifactId>spring-boot-starter-batch</artifactId>
+	    </dependency>
+		```
+		
+	- [apache commons](https://commons.apache.org)
+		- [collection4](https://commons.apache.org/proper/commons-collections/) ver 4.1
+		- [lang3](https://commons.apache.org/lang/) ver 3.5
+	- [google guava](https://github.com/google/guava) ver 21.0
 
 ## 사용방법
 - main class : `CsvToDmlGenerateApplication`
@@ -40,9 +58,9 @@ db 데이터를 덤프받은 csv 파일을 insert 구문의 dml로 생성하는 
 	- `chunk` 단위는 임의로 100개로 지정하였다. (`CsvToDmlGenerateJobConfiguration.dmlQueryGenerateStep()` 메소드 참고)
 - `io.github.gogleowner.item` : reader, processor, writer
 	- reader : csv 파일을 읽어서 `Map<String, String>`의 형태로 return 한다.
-		- 파일을 읽는 역할을 하기에 `FlatFileItemReader`를 상속받아 구현했다.
+		- 파일을 읽는 역할을 하기에 `FlatFileItemReaderBuilder` 를 이용하여 `FlatFileItemReader`를 생성하도록 했다.
 		- `Map`의 key는 컬럼명, value는 컬럼의 값이다.
 	- processor : insert dml 구문을 생성한다.
 		- insert dml 구문 생성시 `StrSubstitutor`을 사용했다.
 	- writer : 파일에 write 한다.
-		- 파일에 쓰는 역할을 하기에 `FlatFileItemWriter`를 상속받아 구현했다.
+		- 파일에 쓰는 역할을 하기에 `FlatFileItemWriterBuilder`를 이용하여 `FlatFileItemWriter`를 생성하도록 했다.
