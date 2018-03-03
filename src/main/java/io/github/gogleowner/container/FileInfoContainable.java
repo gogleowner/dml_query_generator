@@ -1,5 +1,7 @@
 package io.github.gogleowner.container;
 
+import org.springframework.core.io.FileSystemResource;
+
 /**
  * Created by seunghyolee on 2017. 3. 31..
  */
@@ -19,11 +21,15 @@ public interface FileInfoContainable {
      */
     String getFileDirectoryPath();
 
-    default String getCsvFilePath() {
-        return getFileDirectoryPath() + getTableName() + ".csv";
+    default FileSystemResource getCsvFilePathResource() {
+        return new FileSystemResource(getCsvFilePath());
     }
 
-    default String getDmlFilePath() {
-        return getFileDirectoryPath() + getTableName() + ".dml";
+    default FileSystemResource getDmlFilePathResource() {
+        return new FileSystemResource(getFileDirectoryPath() + getTableName() + ".dml");
+    }
+
+    default String getCsvFilePath() {
+        return getFileDirectoryPath() + getTableName() + ".csv";
     }
 }
