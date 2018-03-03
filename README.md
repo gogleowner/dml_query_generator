@@ -9,19 +9,19 @@ db 데이터를 덤프받은 csv 파일을 insert 구문의 dml로 생성하는 
 - 2018.03.03 업데이트
 	- [Spring Boot 2, batch](https://spring.io/guides/gs/batch-processing/)
 		- [spring batch 4.0.0-RELEASE](https://spring.io/blog/2017/12/04/spring-batch-4-0-0-release-is-now-available) 버전을 반영하기 위하여 스프링부트 버전을 올림
-
-	```
-	<dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-batch</artifactId>
-    </dependency>
-	```
 	
-- [apache commons](https://commons.apache.org)
-	- [collection4](https://commons.apache.org/proper/commons-collections/) ver 4.1
-	- [text](https://commons.apache.org/text/) ver 1.2
-		- [lang3](https://commons.apache.org/lang/) ver 3.7 부터 텍스트를 다루는 클래스들은 [text](https://commons.apache.org/text/)로 나누어지고 기존 클래스들은 @Deprecated 되었다.
-- [google guava](https://github.com/google/guava) ver 24.0-jre
+		```
+		<dependency>
+	        <groupId>org.springframework.boot</groupId>
+	        <artifactId>spring-boot-starter-batch</artifactId>
+	    </dependency>
+		```
+			
+	- [apache commons](https://commons.apache.org)
+		- [collection4](https://commons.apache.org/proper/commons-collections/) ver 4.1
+		- [text](https://commons.apache.org/text/) ver 1.2
+			- [lang3](https://commons.apache.org/lang/) ver 3.7 부터 텍스트를 다루는 클래스들은 [text](https://commons.apache.org/text/)로 나누어지고 기존 클래스들은 @Deprecated 되었다.
+	- [google guava](https://github.com/google/guava) ver 24.0-jre
 
 - 이전 내용..
 	- [Maven](https://maven.apache.org) ver. 3 이상
